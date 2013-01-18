@@ -1,0 +1,33 @@
+基本の形
+
+public class  hogemap extends Configured implements Tool{
+  public static class hogeMapper extends Mapper<入力(型) key ,入力(型) value ,出力(型) key,出力(型) value>{
+  }
+  @Override
+  public void map(入力(型) key ,入力(型) value ,Context context)
+  throws IOException, InterruptedException {
+  //型をそろえる
+  context.write(new 出力,new 出力);
+  
+  }
+
+  public static class hogeReducer extends Reducer<map出力(型) key, map出力(型) value, reduce出力(型) key, reduce出力(型) value> {
+    public void reduce(IntWritable key, Iterable<Text> values, Context context)
+    throws IOException, InterruptedException {
+      for (Text value : values) {
+        context.write(key, value);
+      }
+    }
+  }
+
+}
+
+
+//例
+public class DumpHib extends Configured implements Tool {
+
+  public static class DumpHibMapper extends Mapper<ImageHeader, FloatImage, IntWritable, Text> {
+    }
+    @Override
+    public void map(ImageHeader key, FloatImage value, Context context)
+    throws IOException, InterruptedException {
